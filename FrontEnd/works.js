@@ -23,7 +23,7 @@ function genererWorks(works) {
     const titleWork = document.createElement("figcaption");
     titleWork.innerText = figure.title;
 
-    //on rattache les balises au dom
+    //on rattache les balises au DOM
 
     gallery.appendChild(elementWork);
     elementWork.appendChild(imageWork);
@@ -33,8 +33,12 @@ function genererWorks(works) {
 //afficher le contenue de la gallery
 genererWorks(works);
 
-//gestion des filtres
+//gestion de la partie filtre
+//recupération des catégories depuis l'API
+const rep = await fetch("http://localhost:5678/api/categories");
+let categories = await rep.json();
 
+//ecoute du click sur les filtres
 //filtre tous
 const btnTous = document.querySelector(".btn-tous");
 btnTous.addEventListener("click", () => {
