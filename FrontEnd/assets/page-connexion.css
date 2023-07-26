@@ -253,11 +253,16 @@ form input {
 }
 
 footer {
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+footer {
   position: absolute;
   bottom: 0;
   width: 100%;
+  max-width: 1140px;
 }
-
 footer nav ul {
   display: flex;
   justify-content: flex-end;
