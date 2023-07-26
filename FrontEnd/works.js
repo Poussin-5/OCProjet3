@@ -34,9 +34,6 @@ function genererWorks(works) {
 genererWorks(works);
 
 //gestion de la partie filtre
-//recupération des catégories depuis l'API
-const rep = await fetch("http://localhost:5678/api/categories");
-let categories = await rep.json();
 
 //ecoute du click sur les filtres
 //filtre tous
