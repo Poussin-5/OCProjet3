@@ -255,6 +255,10 @@ form input {
   cursor: pointer;
 }
 
+.error {
+  color: red;
+}
+
 footer {
   align-items: flex-end;
   justify-content: flex-end;
