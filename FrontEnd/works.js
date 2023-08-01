@@ -43,37 +43,6 @@ btnTous.addEventListener("click", () => {
   genererWorks(works);
 });
 
-//filtre objets
-const btnObjets = document.querySelector(".btn-objets");
-btnObjets.addEventListener("click", () => {
-  const worksObjets = works.filter(function (works) {
-    return works.categoryId === 1;
-  });
-  document.querySelector(".gallery").innerHTML = "";
-  genererWorks(worksObjets);
-});
-
-//filtre Appartements
-const btnAppart = document.querySelector(".btn-appart");
-btnAppart.addEventListener("click", () => {
-  const worksAppart = works.filter(function (works) {
-    return works.categoryId === 2;
-  });
-  document.querySelector(".gallery").innerHTML = "";
-  genererWorks(worksAppart);
-});
-
-//filtre Hôtel & Restaurant
-const btnHotelResto = document.querySelector(".btn-hotel-resto");
-btnHotelResto.addEventListener("click", () => {
-  const worksHotelResto = works.filter(function (works) {
-    return works.categoryId === 3;
-  });
-  document.querySelector(".gallery").innerHTML = "";
-  genererWorks(worksHotelResto);
-});
-
-/*
 //création des filtres
 //recupération des catégories depuis l'API
 const rep = await fetch("http://localhost:5678/api/categories");
@@ -81,24 +50,22 @@ let categories = await rep.json();
 
 //creation des filtres
 function genererFilter(categories) {
-  for (let i = 0; i < categories.length; i++) {
-    let button = categories[i];
-
+  for (let categorie of categories) {
     //recup parent DOM
     const filter = document.querySelector(".filter");
 
     //création de la balise du filtre
     const elementFiltre = document.createElement("button");
-    elementFiltre.innerText = button.name;
+    elementFiltre.innerText = categorie.name;
 
     //ratachement des balises au DOM
     filter.appendChild(elementFiltre);
-    elementFiltre.classList.add(`btn-${button.id}`);
+    elementFiltre.classList.add(`btn-${categorie.id}`);
 
-    const btn = document.querySelector(`.btn-${button.id}`);
+    const btn = document.querySelector(`.btn-${categorie.id}`);
     btn.addEventListener("click", () => {
       const worksBtn = works.filter(function (works) {
-        return works.categoryId === i;
+        return works.categoryId === categorie.id;
       });
       document.querySelector(".gallery").innerHTML = "";
       genererWorks(worksBtn);
@@ -107,4 +74,3 @@ function genererFilter(categories) {
 }
 
 genererFilter(categories);
-*/
