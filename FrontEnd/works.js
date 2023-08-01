@@ -6,7 +6,7 @@ console.log(works);
 
 //création des projets
 
-function genererWorks(works) {
+function generateWorks(works) {
   for (let i = 0; i < works.length; i++) {
     let figure = works[i];
 
@@ -31,7 +31,7 @@ function genererWorks(works) {
   }
 }
 //afficher le contenue de la gallery
-genererWorks(works);
+generateWorks(works);
 
 //gestion de la partie filtre
 
@@ -49,28 +49,31 @@ const rep = await fetch("http://localhost:5678/api/categories");
 let categories = await rep.json();
 
 //creation des filtres
-function genererFilter(categories) {
-  for (let categorie of categories) {
+function generateFilter(categories) {
+  for (let category of categories) {
     //recup parent DOM
     const filter = document.querySelector(".filter");
 
     //création de la balise du filtre
-    const elementFiltre = document.createElement("button");
-    elementFiltre.innerText = categorie.name;
+    const elementFilter = document.createElement("button");
+    elementFilter.innerText = category.name;
 
     //ratachement des balises au DOM
-    filter.appendChild(elementFiltre);
-    elementFiltre.classList.add(`btn-${categorie.id}`);
+    filter.appendChild(elementFilter);
+    elementFilter.classList.add(`btn-${category.id}`);
 
-    const btn = document.querySelector(`.btn-${categorie.id}`);
+    //ajout du listener au button pour trier
+    const btn = document.querySelector(`.btn-${category.id}`);
     btn.addEventListener("click", () => {
       const worksBtn = works.filter(function (works) {
-        return works.categoryId === categorie.id;
+        return works.categoryId === category.id;
       });
       document.querySelector(".gallery").innerHTML = "";
-      genererWorks(worksBtn);
+      generateWorks(worksBtn);
     });
   }
 }
 
-genererFilter(categories);
+//génération des filtres en fonctions des catégories
+
+generateFilter(categories);
