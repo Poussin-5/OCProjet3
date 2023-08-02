@@ -40,7 +40,7 @@ generateWorks(works);
 const btnTous = document.querySelector(".btn-tous");
 btnTous.addEventListener("click", () => {
   document.querySelector(".gallery").innerHTML = "";
-  genererWorks(works);
+  generateWorks(works);
 });
 
 //création des filtres

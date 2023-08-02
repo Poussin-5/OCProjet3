@@ -24,13 +24,14 @@ function connexion() {
       email: event.target.querySelector("[name=email]").value,
       mdp: event.target.querySelector("[name=mdp]").value,
     };
-    let reponse = await fetch("http://localhost:5678/api/users/login", {
+    console.log(user);
+    const reponse = await fetch("http://localhost:5678/api/users/login", {
       method: "POST",
-      headers: { "content-type": "application/json;charset=utf-8 " },
+      headers: { "content-type": "application/json" },
       body: JSON.stringify(user),
     });
     let result = await reponse.json();
-    alert(result.message);
+    console.log(result);
   });
 }
 
