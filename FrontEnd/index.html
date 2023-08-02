@@ -12,16 +12,22 @@
     />
     <meta name="description" content="" />
     <link rel="stylesheet" href="./assets/style.css" />
-    <script type="module" src="works.js"></script>
+    <script type="module" src="works.js" defer></script>
   </head>
   <body>
     <header>
       <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
       <nav>
         <ul>
-          <li>projets</li>
-          <li>contact</li>
-          <li>login</li>
+          <li>
+            <a>projets</a>
+          </li>
+          <li>
+            <a>contact</a>
+          </li>
+          <li>
+            <a href="login.html">login</a>
+          </li>
           <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
         </ul>
       </nav>
@@ -54,9 +60,6 @@
         <h2>Mes Projets</h2>
         <div class="filter">
           <button class="btn-tous">Tous</button>
-          <button class="btn-objets">Objets</button>
-          <button class="btn-appart">Appartements</button>
-          <button class="btn-hotel-resto">Hôtel & restaurants</button>
         </div>
         <div class="gallery"></div>
       </section>
