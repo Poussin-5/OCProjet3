@@ -16,7 +16,7 @@ function afficherMessageErreur() {
   spanMessageErreur.innerText = "l'email ou le mot de passe n'est pas correct";
 }
 
-function login() {
+function submitLogin() {
   let formConnexion = document.querySelector(".form-connexion");
   formConnexion.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -33,10 +33,22 @@ function login() {
     });
     let userJson = await reponse.json();
     console.log(userJson);
+
+    let userId = userJson.userId;
+    let token = userJson.token;
+
+    if (userId != null) {
+      window.localStorage.setItem("token", token);
+      window.localStorage.setItem("userId", userId);
+
+      afficherAccueil();
+    } else {
+      afficherMessageErreur();
+    }
   });
 }
 
-login();
+submitLogin();
 /*
 function connexion() {
   let formConnexion = document.querySelector(".form-connexion");
