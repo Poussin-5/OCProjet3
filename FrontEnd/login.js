@@ -16,7 +16,7 @@ function afficherMessageErreur() {
   spanMessageErreur.innerText = "l'email ou le mot de passe n'est pas correct";
 }
 
-function connexion() {
+function login() {
   let formConnexion = document.querySelector(".form-connexion");
   formConnexion.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -36,7 +36,7 @@ function connexion() {
   });
 }
 
-connexion();
+login();
 /*
 function connexion() {
   let formConnexion = document.querySelector(".form-connexion");
