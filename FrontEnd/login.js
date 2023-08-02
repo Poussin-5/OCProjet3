@@ -21,17 +21,18 @@ function connexion() {
   formConnexion.addEventListener("submit", async (event) => {
     event.preventDefault();
     let user = {
-      email: event.target.querySelector("[name=email]").value,
-      mdp: event.target.querySelector("[name=mdp]").value,
+      email: document.querySelector("[name=email]").value,
+      password: document.querySelector("[name=mdp]").value,
     };
     console.log(user);
+
     const reponse = await fetch("http://localhost:5678/api/users/login", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(user),
     });
-    let result = await reponse.json();
-    console.log(result);
+    let userJson = await reponse.json();
+    console.log(userJson);
   });
 }
 
