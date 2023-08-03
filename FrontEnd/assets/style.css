@@ -147,7 +147,7 @@ header {
 section {
   margin: 50px 0;
 }
-
+/*Admin part*/
 .hidden {
   display: none;
 }
@@ -165,7 +165,7 @@ section {
 }
 
 .admin button:hover {
-  background-color: grey;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .admin button i {
@@ -180,6 +180,83 @@ section {
 .share-btn {
   background-color: white;
   color: black;
+}
+
+/*modal part */
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.modal-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  width: 650px;
+  max-width: calc(100vw - 50px);
+  max-height: calc(100vh -50px);
+  box-sizing: content-box;
+}
+
+.modal-wrapper a {
+  align-self: flex-end;
+  padding: 10px;
+}
+
+.modal-wrapper a:hover {
+  cursor: pointer;
+}
+
+h3 {
+  color: var(--second-color);
+  font-family: "work sans";
+  font-size: 26px;
+  font-weight: 400;
+}
+
+.modal-gallery {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+}
+
+.button-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  border-top: solid #b3b3b3 1px;
+  width: 40%;
+}
+
+.button-modal:hover {
+  background-color: rbga (0 0 0 0.6);
+}
+.button-modal button {
+  font-family: "Syne";
+  text-align: center;
+  border-radius: 60px;
+  width: 75%;
+}
+.send-pict {
+  color: white;
+  background-color: #1d6154;
+}
+
+.rem-gallery {
+  color: red;
+  background-color: transparent;
 }
 
 h1 {
