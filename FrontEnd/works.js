@@ -77,3 +77,17 @@ function generateFilter(categories) {
 //génération des filtres en fonctions des catégories
 
 generateFilter(categories);
+
+let connected = window.localStorage.getItem("userId");
+let log = document.querySelector("#log");
+
+if (connected != null) {
+  let log = document.querySelector("#log");
+  log.innerText = "logout";
+  log.addEventListener("click", () => {
+    window.localStorage.removeItem("token");
+    window.localStorage.removeItem("userId");
+  });
+  let divAdmin = document.querySelector(".admin");
+  divAdmin.classList.remove("hidden");
+}
