@@ -148,6 +148,40 @@ section {
   margin: 50px 0;
 }
 
+.hidden {
+  display: none;
+}
+
+.admin {
+  background-color: black;
+  text-align: center;
+  padding: 10px;
+}
+
+.admin button {
+  padding: 10px 20px;
+  border-radius: 60px;
+  border: none;
+}
+
+.admin button:hover {
+  background-color: grey;
+}
+
+.admin button i {
+  color: white;
+}
+
+.edition-btn {
+  background: transparent;
+  color: white;
+}
+
+.share-btn {
+  background-color: white;
+  color: black;
+}
+
 h1 {
   display: flex;
   flex-direction: column;
