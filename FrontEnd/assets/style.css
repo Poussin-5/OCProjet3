@@ -148,9 +148,6 @@ section {
   margin: 50px 0;
 }
 /*Admin part*/
-.hidden {
-  display: none;
-}
 
 .admin {
   background-color: black;
@@ -165,14 +162,14 @@ section {
 }
 
 .admin button:hover {
-  background-color: rgba(0, 0, 0, 0.7);
+  cursor: pointer;
 }
 
 .admin button i {
   color: white;
 }
 
-.edition-btn {
+.edit-btn {
   background: transparent;
   color: white;
 }
@@ -196,19 +193,20 @@ section {
 }
 
 .modal-wrapper {
+  overflow: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: white;
   width: 650px;
   max-width: calc(100vw - 50px);
-  max-height: calc(100vh -50px);
+  max-height: calc(100vh - 50px);
   box-sizing: content-box;
 }
 
-.modal-wrapper a {
+.cross {
   align-self: flex-end;
-  padding: 10px;
+  margin: 15px;
 }
 
 .modal-wrapper a:hover {
@@ -223,11 +221,28 @@ h3 {
 }
 
 .modal-gallery {
-  width: 100%;
+  width: 75%;
+  padding: 50px 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-column-gap: 5px;
-  grid-row-gap: 5px;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  box-sizing: border-box;
+  border-bottom: solid #b3b3b3 1px;
+}
+
+.modal-gallery figure {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-gallery a {
+  padding: 5px 0px;
+  align-self: flex-start;
+}
+
+.modal-gallery img {
+  width: 100%;
 }
 
 .button-modal {
@@ -236,13 +251,9 @@ h3 {
   align-items: center;
   gap: 10px;
   padding: 20px;
-  border-top: solid #b3b3b3 1px;
   width: 40%;
 }
 
-.button-modal:hover {
-  background-color: rbga (0 0 0 0.6);
-}
 .button-modal button {
   font-family: "Syne";
   text-align: center;

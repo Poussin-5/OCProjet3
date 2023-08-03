@@ -148,6 +148,10 @@ header {
   margin: 50px 0;
 }
 
+header a {
+  text-decoration: none;
+}
+
 main {
   margin-top: 100px;
   display: flex;

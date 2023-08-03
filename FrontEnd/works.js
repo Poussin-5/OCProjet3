@@ -89,5 +89,5 @@ if (connected != null) {
     window.localStorage.removeItem("userId");
   });
   let divAdmin = document.querySelector(".admin");
-  divAdmin.classList.remove("hidden");
+  divAdmin.style.display = null;
 }
