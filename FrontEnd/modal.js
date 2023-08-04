@@ -33,7 +33,7 @@ function openModal() {
   });
 }
 
-function quitModal() {
+function closeModal() {
   const cross = document.querySelector(".cross");
   cross.addEventListener("click", () => {
     const aside = document.querySelector("#modal1");
@@ -42,5 +42,5 @@ function quitModal() {
 }
 
 openModal();
-quitModal();
+closeModal();
 generateWorksModal(works);
