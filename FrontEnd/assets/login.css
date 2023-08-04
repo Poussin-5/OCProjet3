@@ -142,10 +142,15 @@ body {
   font-size: 14px;
 }
 
+/* header */
 header {
   display: flex;
   justify-content: space-between;
   margin: 50px 0;
+}
+
+header a {
+  text-decoration: none;
 }
 
 main {
@@ -192,6 +197,8 @@ nav li a {
 li:hover a {
   color: #b1663c;
 }
+
+/* formulaire */
 
 .formulaire {
   display: flex;
@@ -261,6 +268,7 @@ form input {
   color: red;
 }
 
+/* footer */
 footer {
   align-items: flex-end;
   justify-content: flex-end;

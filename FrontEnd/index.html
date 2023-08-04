@@ -16,16 +16,28 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="./assets/style.css" />
+    <script type="module" src="modal.js"></script>
     <script type="module" src="works.js"></script>
     <script type="module" src="login.js"></script>
   </head>
 
   <body>
-    <div class="admin hidden">
-      <button class="edition-btn">
+    <div class="admin" style="display: none">
+      <button class="edit-btn js-modal" href="#modal1">
         <i class="fa-regular fa-pen-to-square"></i>
         Mode éditions
       </button>
+      <aside id="modal1" class="modal" role="dialog" style="display: none">
+        <div class="modal-wrapper">
+          <a class="cross"><i class="fa-solid fa-xmark"></i></a>
+          <h3>Galerie photo</h3>
+          <div class="modal-gallery"></div>
+          <div class="button-modal">
+            <button class="send-pict">Ajouter une photo</button>
+            <button class="rem-gallery">Supprimer la galerie</button>
+          </div>
+        </div>
+      </aside>
       <button class="share-btn">publier les changements</button>
     </div>
     <header>
