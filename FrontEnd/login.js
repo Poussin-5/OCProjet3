@@ -1,4 +1,4 @@
-import { createElement } from "./elemen.js";
+import { createElement } from "./element.js";
 
 function afficherAccueil() {
   let pageAccueil = "./index.html";

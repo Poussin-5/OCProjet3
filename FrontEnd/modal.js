@@ -1,3 +1,5 @@
+import { createElement, createImage } from "./element.js";
+
 const reponse = await fetch("http://localhost:5678/api/works");
 let works = await reponse.json();
 
@@ -6,7 +8,7 @@ function generateWorksModal(works) {
     //recupération de l'élément parent du DOM
     const modalGallery = document.querySelector(".modal-gallery");
 
-    //création de la balise du projet
+    /*
     const elementWork = document.createElement("figure");
 
     //création des balises
@@ -21,17 +23,46 @@ function generateWorksModal(works) {
     const btnDelete = document.createElement("button");
     btnDelete.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
     btnDelete.classList.add("btn-delete");
+
+    */
+
+    //création de la balise du projet
+    const elementWork = createElement({
+      balise: `figure`,
+    });
+
+    const divImageWork = createElement({
+      balise: `div`,
+      classes: `image-work`,
+    });
+
+    const imageWork = createImage({
+      src: work.imageUrl,
+      alt: "photo-du-projet",
+    });
+
+    const editButton = createElement({
+      balise: `a`,
+      text: `editer`,
+    });
+
+    const btnDelete = createElement({
+      balise: `button`,
+      classes: `btn-delete`,
+      html: '<i class="fa-solid fa-trash-can"></i>',
+    });
+
     //on rattache les balises au DOM
 
     modalGallery.appendChild(elementWork);
     elementWork.appendChild(divImageWork);
     divImageWork.appendChild(imageWork);
-    elementWork.appendChild(editButton);
     divImageWork.appendChild(btnDelete);
+    elementWork.appendChild(editButton);
   }
 }
 function openModal() {
-  const editBtn = document.querySelector(".js-modal");
+  const editBtn = document.querySelector(".open-modal");
   editBtn.addEventListener("click", () => {
     const aside = document.querySelector("#modal1");
     aside.style.display = null;

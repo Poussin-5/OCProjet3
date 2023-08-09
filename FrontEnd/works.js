@@ -90,6 +90,8 @@ if (connected != null) {
     window.localStorage.removeItem("token");
     window.localStorage.removeItem("userId");
   });
-  let divAdmin = document.querySelector(".admin");
-  divAdmin.style.display = null;
+  const baliseAdmin = document.querySelectorAll(".admin-js");
+  for (let balise of baliseAdmin) {
+    balise.style.display = null;
+  }
 }
