@@ -41,13 +41,13 @@ function submitLogin() {
     let userId = userJson.userId;
     let token = userJson.token;
 
-    if (userId != null) {
+    if (!userId) {
+      afficherMessageErreur();
+    } else {
       window.localStorage.setItem("token", token);
       window.localStorage.setItem("userId", userId);
 
       afficherAccueil();
-    } else {
-      afficherMessageErreur();
     }
   });
 }
