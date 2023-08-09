@@ -149,6 +149,10 @@ section {
   background-color: black;
   text-align: center;
   padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .admin button {
@@ -216,6 +220,20 @@ h3 {
   font-weight: 400;
 }
 
+.button-modal button:hover {
+  cursor: pointer;
+}
+
+.button-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  width: 40%;
+}
+
+/* modal gallery  */
 .modal-gallery {
   width: 75%;
   padding: 50px 0;
@@ -225,6 +243,10 @@ h3 {
   grid-row-gap: 10px;
   box-sizing: border-box;
   border-bottom: solid #b3b3b3 1px;
+}
+
+.js-modal:hover {
+  cursor: pointer;
 }
 
 .modal-gallery figure {
@@ -237,20 +259,42 @@ h3 {
   align-self: flex-start;
 }
 
+.modal-gallery button i {
+  color: white;
+  padding: 2px;
+}
+
+.image-work {
+  position: relative;
+}
+
 .modal-gallery img {
   width: 100%;
 }
 
-.button-modal {
+.btn-delete {
+  width: 25%;
+  background-color: black;
+  border: none;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 10px;
-  padding: 20px;
-  width: 40%;
+  justify-content: center;
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 
+.btn-delete:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+/* fenetre modal bouton*/
+
 .button-modal button {
+  padding: 10px 20px;
+  border-radius: 60px;
+  border: none;
   font-family: "Syne";
   text-align: center;
   border-radius: 60px;
@@ -264,6 +308,11 @@ h3 {
 .rem-gallery {
   color: red;
   background-color: transparent;
+}
+
+.button-modal button:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }
 
 /* header */
@@ -339,9 +388,39 @@ li:hover a {
 
 /* Portfolio */
 
-#portfolio h2 {
-  text-align: center;
+#portfolio {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+#portfolio .projet-titre {
+  display: grid;
+  width: 80%;
+  grid-template-columns: 1fr 1fr 1fr;
   margin-bottom: 1em;
+}
+
+.projet-titre h2 {
+  text-align: center;
+  grid-column-start: 2;
+  grid-row-start: 1;
+}
+
+.projet-titre a {
+  display: flex;
+  font-size: 14px;
+  justify-content: left;
+  align-items: center;
+  gap: 15px;
+  grid-column-start: 3;
+  grid-row-start: 1;
+  color: black;
+}
+
+.projet-titre i {
+  color: black;
 }
 
 .filter {

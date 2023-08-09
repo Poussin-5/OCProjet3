@@ -1,3 +1,5 @@
+import { createElement, createImage } from "./element.js";
+
 // recupération des projets depuis l'API
 const reponse = await fetch("http://localhost:5678/api/works");
 let works = await reponse.json();
@@ -7,21 +9,23 @@ console.log(works);
 //création des projets
 
 function generateWorks(works) {
-  for (let i = 0; i < works.length; i++) {
-    let figure = works[i];
-
+  for (let work of works) {
     //recupération de l'élément parent du DOM
     const gallery = document.querySelector(".gallery");
 
-    //création de la balise du projet
-    const elementWork = document.createElement("figure");
+    const elementWork = createElement({
+      balise: `figure`,
+    });
 
-    //création des balises
-    const imageWork = document.createElement("img");
-    imageWork.src = figure.imageUrl;
+    const imageWork = createImage({
+      src: work.imageUrl,
+      alt: "photo-du-projet",
+    });
 
-    const titleWork = document.createElement("figcaption");
-    titleWork.innerText = figure.title;
+    const titleWork = createElement({
+      balise: `figcaption`,
+      text: work.title,
+    });
 
     //on rattache les balises au DOM
 
@@ -51,16 +55,15 @@ let categories = await rep.json();
 //creation des filtres
 function generateFilter(categories) {
   for (let category of categories) {
-    //recup parent DOM
     const filter = document.querySelector(".filter");
 
-    //création de la balise du filtre
-    const elementFilter = document.createElement("button");
-    elementFilter.innerText = category.name;
+    const elementFilter = createElement({
+      balise: `button`,
+      text: category.name,
+      classes: `btn-${category.id}`,
+    });
 
-    //ratachement des balises au DOM
     filter.appendChild(elementFilter);
-    elementFilter.classList.add(`btn-${category.id}`);
 
     //ajout du listener au button pour trier
     const btn = document.querySelector(`.btn-${category.id}`);
@@ -79,7 +82,6 @@ function generateFilter(categories) {
 generateFilter(categories);
 
 let connected = window.localStorage.getItem("userId");
-let log = document.querySelector("#log");
 
 if (connected != null) {
   let log = document.querySelector("#log");
