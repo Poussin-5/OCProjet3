@@ -238,7 +238,7 @@ h3 {
   width: 40%;
 }
 
-/* modal2 */
+/* modal page 2 */
 
 .modal-symbol {
   display: flex;
@@ -279,17 +279,20 @@ h3 {
   width: 15%;
 }
 
-form .form-photo button {
+form .form-photo input {
   border: none;
   border-radius: 50px;
+  height: auto;
+  padding: 10px 30px;
   background-color: #cbd6dc;
   color: #306685;
-  padding: 10px 30px;
 }
 
-.modal-form form input {
+.modal-form input {
   height: 50px;
   border: none;
+  padding: 0 15px;
+  background-color: white;
   box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
 }
 
@@ -297,17 +300,16 @@ form .form-photo button {
   height: 50px;
   background-color: white;
   border: none;
+  padding: 0 15px;
   box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
 }
 
 .validate {
   padding: 10px 20px;
-  border: 1px transparent;
   border-radius: 60px;
   border: none;
   font-family: "Syne";
   justify-content: center;
-  border-radius: 60px;
   width: 75%;
 }
 
@@ -376,7 +378,6 @@ form .form-photo button {
   border: none;
   font-family: "Syne";
   justify-content: center;
-  border-radius: 60px;
   width: 75%;
 }
 .button-modal .send-pict {

@@ -124,25 +124,29 @@
               </div>
               <h3>Ajout photo</h3>
               <div class="modal-form">
-                <form action="#" method="post">
+                <form class="workForm" action="#" method="post">
                   <div class="form-photo">
                     <img
                       src="../FrontEnd/assets/icons/image-svgrepo-com.svg"
                       alt="logo image"
                     />
-                    <button class="input-photo">+ Ajouter photo</button>
+                    <input
+                      type="button"
+                      class="input-photo"
+                      value="+ Ajouter photo"
+                    />
                     <p>jpg, png : 4mo max</p>
                   </div>
-                  <label>Titre</label>
-                  <input type="text" />
-                  <label>Catégorie</label>
-                  <select name="catégorie" id="cat-select">
+                  <label for="title">Titre</label>
+                  <input name="title" id="title" type="text" />
+                  <label for="category">Catégorie</label>
+                  <select name="category" id="cat-select">
                     <option value=""></option>
                   </select>
                 </form>
               </div>
               <div class="button-modal">
-                <button class="validate">Valider</button>
+                <button class="validate" type="submit">Valider</button>
               </div>
             </div>
           </aside>
