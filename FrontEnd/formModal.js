@@ -13,6 +13,5 @@ function submitForm() {
       headers: { "content-type": "application/json" },
       body: JSON.stringify(newWork),
     });
-    s;
   });
 }
