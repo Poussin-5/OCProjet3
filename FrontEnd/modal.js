@@ -3,7 +3,7 @@ import { createElement, createImage } from "./element.js";
 const reponse = await fetch("http://localhost:5678/api/works");
 let works = await reponse.json();
 
-function generateWorksModal(works) {
+const generateWorksModal = function (works) {
   for (let work of works) {
     const modalGallery = document.querySelector(".modal-gallery");
 
@@ -37,24 +37,98 @@ function generateWorksModal(works) {
     });
     divImageWork.appendChild(btnDelete);
   }
-}
+};
 
-function openModal() {
-  const editBtn = document.querySelector(".open-modal");
-  editBtn.addEventListener("click", () => {
-    const aside = document.querySelector("#modal1");
-    aside.style.display = null;
-  });
-}
-
-function quitModal() {
-  const cross = document.querySelector(".cross");
-  cross.addEventListener("click", () => {
-    const aside = document.querySelector("#modal1");
-    aside.style.display = "none";
-  });
-}
-
-openModal();
-quitModal();
 generateWorksModal(works);
+
+let modal = null;
+
+const openModal = async function (e) {
+  e.preventDefault();
+  const target = e.target.getAttribute("href");
+  if (target.startsWith("#")) {
+    modal = document.querySelector(target);
+  } else {
+    modal = await loadModal(target);
+  }
+  modal.style.display = null;
+  modal.addEventListener("click", closeModal);
+  modal.querySelector(".js-modal-close").addEventListener("click", closeModal);
+  modal
+    .querySelector(".js-modal-stop")
+    .addEventListener("click", stopPropagation);
+  modal.querySelector(".send-pict").addEventListener("click", modalPage2);
+};
+
+const closeModal = function (e) {
+  if (modal === null) return;
+  e.preventDefault();
+  modal.style.display = "none";
+  modal.removeEventListener("click", closeModal);
+  modal
+    .querySelector(".js-modal-close")
+    .removeEventListener("click", closeModal);
+  modal
+    .querySelector(".js-modal-stop")
+    .removeEventListener("click", stopPropagation);
+  modal = null;
+};
+
+const modalPage2 = function (e) {
+  e.preventDefault();
+  modal.style.display = "none";
+  modal = document.querySelector(".page2");
+  modal.style.display = null;
+  modal.addEventListener("click", closeModal);
+  modal.querySelector(".js-modal-close").addEventListener("click", closeModal);
+  modal
+    .querySelector(".js-modal-stop")
+    .addEventListener("click", stopPropagation);
+  modal.querySelector(".js-modal-back").addEventListener("click", backModal);
+};
+
+const backModal = function (e) {
+  e.preventDefault();
+  modal.style.display = "none";
+  modal = document.querySelector(".page1");
+  modal.style.display = null;
+};
+
+const loadModal = async function (url) {
+  const target = "#" + url.split("#")[1];
+  const existingModal = document.querySelector(target);
+  if (existingModal !== null) return existingModal;
+  const html = await fetch(url).then((response) => response.text());
+  const element = document
+    .createRange()
+    .createContextualFragment(html)
+    .querySelector(target);
+
+  if (element === null)
+    throw `l'élement ${target} n'a pas été trouvé dans la page ${url}`;
+  document.body.append(element);
+  return element;
+};
+
+const stopPropagation = function (e) {
+  e.stopPropagation();
+};
+
+document.querySelectorAll(".js-modal").forEach((a) => {
+  a.addEventListener("click", openModal);
+});
+
+const rep = await fetch("http://localhost:5678/api/categories");
+let categories = await rep.json();
+
+for (let category of categories) {
+  const elementOption = createElement({
+    balise: `option`,
+    text: category.name,
+    value: category.name,
+  });
+
+  const select = document.querySelector("#cat-select");
+
+  select.appendChild(elementOption);
+}

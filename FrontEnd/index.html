@@ -16,8 +16,8 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="./assets/style.css" />
-    <script type="module" src="modal.js"></script>
     <script type="module" src="works.js"></script>
+    <script type="module" src="modal.js"></script>
   </head>
 
   <body>
@@ -72,21 +72,112 @@
       <section id="portfolio">
         <div class="projet-titre">
           <h2>Mes Projets</h2>
-          <a class="admin-js js-modal open-modal" style="display: none">
+          <!-- <a
+            href="modal.html#modal3"
+            class="admin-js js-modal open-modal modal3"
+            style="display: none"
+          >
+            <i class="fa-regular fa-pen-to-square"></i>
+            ajax
+          </a>
+          -->
+          <a
+            href="#modal1"
+            class="admin-js js-modal open-modal"
+            style="display: none"
+          >
             <i class="fa-regular fa-pen-to-square"></i>
             modifier
           </a>
-          <aside id="modal1" class="modal" role="dialog" style="display: none">
-            <div class="modal-wrapper">
-              <a class="cross"><i class="fa-solid fa-xmark"></i></a>
+          <aside
+            id="modal1"
+            class="modal page1"
+            role="dialog"
+            style="display: none"
+          >
+            <div class="modal-wrapper js-modal-stop">
+              <a class="cross js-modal-close"
+                ><i class="fa-solid fa-xmark"></i
+              ></a>
               <h3>Galerie photo</h3>
               <div class="modal-gallery"></div>
               <div class="button-modal">
-                <button class="send-pict">Ajouter une photo</button>
-                <button class="rem-gallery">Supprimer la galerie</button>
+                <a class="send-pict" href="#modal2"> Ajouter une photo </a>
+                <a class="rem-gallery">Supprimer la galerie</a>
               </div>
             </div>
           </aside>
+          <aside
+            id="modal2"
+            class="modal page2"
+            role="dialog"
+            style="display: none"
+          >
+            <div class="modal-wrapper js-modal-stop">
+              <div class="modal-symbol">
+                <a class="arrow js-modal-back">
+                  <i class="fa-solid fa-arrow-left"></i>
+                </a>
+                <a class="cross js-modal-close">
+                  <i class="fa-solid fa-xmark"></i>
+                </a>
+              </div>
+              <h3>Ajout photo</h3>
+              <div class="modal-form">
+                <form action="#" method="post">
+                  <div class="form-photo">
+                    <img
+                      src="../FrontEnd/assets/icons/image-svgrepo-com.svg"
+                      alt="logo image"
+                    />
+                    <button class="input-photo">+ Ajouter photo</button>
+                    <p>jpg, png : 4mo max</p>
+                  </div>
+                  <label>Titre</label>
+                  <input type="text" />
+                  <label>Catégorie</label>
+                  <select name="catégorie" id="cat-select">
+                    <option value=""></option>
+                  </select>
+                </form>
+              </div>
+              <div class="button-modal">
+                <button class="validate">Valider</button>
+              </div>
+            </div>
+          </aside>
+          <!--<aside id="modal2" class="modal2" role="dialog" style="display: none">
+            <div class="modal-wrapper js-modal-stop">
+              <div class="modal-symbol">
+                <a class="arrow js-modal-back">
+                  <i class="fa-solid fa-arrow-left"></i>
+                </a>
+                <a class="cross js-modal-close">
+                  <i class="fa-solid fa-xmark"></i>
+                </a>
+              </div>
+              <h3>Ajout photo</h3>
+              <div class="modal-form">
+                <form action="#" method="post">
+                  <div class="form-photo">
+                    <img
+                      src="../FrontEnd/assets/icons/image-svgrepo-com.svg"
+                      alt="logo image"
+                    />
+                    <button class="input-photo">+ Ajouter photo</button>
+                    <p>jpg, png : 4mo max</p>
+                  </div>
+                  <label>Titre</label>
+                  <input type="text" />
+                  <label>Catégorie</label>
+                  <select name="catégorie" id="cat-select"></select>
+                </form>
+              </div>
+              <div class="button-modal">
+                <button class="validate">Valider</button>
+              </div>
+            </div>
+          </aside> -->
         </div>
         <div class="filter">
           <button class="btn-tous">Tous</button>

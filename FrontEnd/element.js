@@ -1,4 +1,4 @@
-export const createElement = ({ balise, text, classes, id, html }) => {
+export const createElement = ({ balise, text, classes, id, html, value }) => {
   const element = document.createElement(balise);
   if (text) {
     element.innerText = text;
@@ -14,6 +14,10 @@ export const createElement = ({ balise, text, classes, id, html }) => {
 
   if (html) {
     element.innerHTML = html;
+  }
+
+  if (value) {
+    element.value = value;
   }
   return element;
 };
