@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="./assets/style.css" />
     <script type="module" src="works.js"></script>
     <script type="module" src="modal.js"></script>
+    <script type="module" src="formModal.js"></script>
+    <script type="module" src="resetForm.js"></script>
   </head>
 
   <body>
@@ -80,7 +82,7 @@
             <i class="fa-regular fa-pen-to-square"></i>
             ajax
           </a>
-          -->
+-->
           <a
             href="#modal1"
             class="admin-js js-modal open-modal"
@@ -125,29 +127,41 @@
               <h3>Ajout photo</h3>
               <div class="modal-form">
                 <form class="workForm" action="#" method="post">
-                  <div class="form-photo">
-                    <img
-                      src="../FrontEnd/assets/icons/image-svgrepo-com.svg"
-                      alt="logo image"
-                    />
-                    <input
-                      type="button"
-                      name="photo"
-                      class="input-photo"
-                      value="+ Ajouter photo"
-                    />
-                    <p>jpg, png : 4mo max</p>
+                  <div class="add-photo">
+                    <div class="form-photo">
+                      <img
+                        src="../FrontEnd/assets/icons/image-svgrepo-com.svg"
+                        alt="logo image"
+                      />
+                      <button class="input-photo" type="button">
+                        + Ajouter photo
+                      </button>
+                      <input
+                        type="file"
+                        value="+ Ajouter photo"
+                        name="image"
+                        id="input-photo"
+                        required
+                        hidden
+                      />
+                      <p>jpg, png : 4mo max</p>
+                    </div>
                   </div>
                   <label for="title">Titre</label>
-                  <input name="title" id="title" type="text" />
+                  <input
+                    required
+                    title="title"
+                    id="title"
+                    name="title"
+                    type="text"
+                  />
                   <label for="category">Catégorie</label>
-                  <select name="category" id="cat-select">
+                  <select required name="category" id="cat-select">
                     <option value=""></option>
                   </select>
+
+                  <button class="validate" type="submit">Valider</button>
                 </form>
-              </div>
-              <div class="button-modal">
-                <button class="validate" type="submit">Valider</button>
               </div>
             </div>
           </aside>

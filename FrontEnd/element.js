@@ -22,10 +22,14 @@ export const createElement = ({ balise, text, classes, id, html, value }) => {
   return element;
 };
 
-export const createImage = ({ src, alt }) => {
+export const createImage = ({ src, alt, classes }) => {
   const element = createElement({ balise: "img" });
   element.src = src;
   element.alt = alt;
+
+  if (classes) {
+    element.classList.add(classes);
+  }
 
   return element;
 };

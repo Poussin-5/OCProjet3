@@ -42,6 +42,7 @@ const generateWorksModal = function (works) {
 generateWorksModal(works);
 
 let modal = null;
+let workForm = document.querySelector(".workForm");
 
 const openModal = async function (e) {
   e.preventDefault();
@@ -72,6 +73,8 @@ const closeModal = function (e) {
     .querySelector(".js-modal-stop")
     .removeEventListener("click", stopPropagation);
   modal = null;
+
+  workForm.reset();
 };
 
 const modalPage2 = function (e) {
@@ -92,6 +95,8 @@ const backModal = function (e) {
   modal.style.display = "none";
   modal = document.querySelector(".page1");
   modal.style.display = null;
+
+  workForm.reset();
 };
 
 const loadModal = async function (url) {
@@ -125,7 +130,7 @@ for (let category of categories) {
   const elementOption = createElement({
     balise: `option`,
     text: category.name,
-    value: category.name,
+    value: category.id,
   });
 
   const select = document.querySelector("#cat-select");
