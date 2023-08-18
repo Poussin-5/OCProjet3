@@ -6,4 +6,9 @@ workForm.addEventListener("reset", () => {
     loadedImg.remove();
     document.querySelector(".form-photo").style.display = null;
   }
+  const btnSubmit = document.querySelector(".validate");
+  btnSubmit.classList.remove("validate-green");
+
+  const erroClassList = document.querySelectorAll(".error");
+  erroClassList.forEach((classError) => classError.classList.remove("error"));
 });

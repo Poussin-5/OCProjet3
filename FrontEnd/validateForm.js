@@ -15,51 +15,48 @@ function afficherMessageErreur(message) {
   spanMessageErreur.innerText = message;
 }
 
-let btnValider = document.querySelector(".validate");
-let source = document.getElementById("photo").file[0];
-let title = document.getElementById("title").value;
-let category = document.getElementById("Category").value;
-
-console.log(source, title, category);
+let btnSubmit = document.querySelector(".validate");
 
 /*
-function validerInput(input) {
-  let champ = document.getElementById(input);
-  champ.addEventListener("change", (e) => {
-    if (!input.value) throw new Error(`le champ ${input} est vide`);
-  });
+function getValueInput() {
+  let inputPhoto = document.querySelector("#photo").files[0];
+  let inputTitle = document.querySelector("#title").value;
+  let inputCategory = document.querySelector("#category").value;
+  console.log(inputCategory, inputPhoto, inputTitle)
+
 }
 
-let source = document.getElementById("photo").file[0];
-let title = document.getElementById("title").value;
-let category = document.getElementById("Category").value;
+*/
 
-function validerForm() {
-  try {
-    validerInput(source);
-    validerInput(title);
-    validerInput(category);
-  } catch (erreur) {
-    afficherMessageErreur(erreur.message);
+workForm.addEventListener("change", () => {
+  let inputPhoto = document.querySelector("#photo").files[0];
+  let inputTitle = document.querySelector("#title").value;
+  let inputCategory = document.querySelector("#category").value;
+
+  if (inputPhoto && inputTitle && inputCategory) {
+    btnSubmit.classList.add("validate-green");
+  } else {
+    btnSubmit.classList.remove("validate-green");
   }
-}
-
-workForm.addEventListener("change", (e) => {
-  validerForm();
 });
-*/
-/*
-function validerPhoto(source) {
-  if (!source) throw new Error(`il n'y a pas de photo`);
-}
 
+btnSubmit.addEventListener("click", () => {
+  const inputPhotoValue = document.querySelector("#photo").files[0];
+  const inputTitleValue = document.querySelector("#title").value;
+  const inputCategoryValue = document.querySelector("#category").value;
 
-function validerTitle(title) {
-  if (!title) throw new Error(`il manque un titre`);
-}
+  if (!inputPhotoValue) {
+    const formPhoto = document.querySelector(".form-photo");
+    formPhoto.classList.add("error");
+  }
 
+  if (!inputTitleValue) {
+    const inputTitle = document.querySelector("#title");
+    inputTitle.classList.add("error");
+  }
 
-function validerCategory(category) {
-  if (!category) throw new Error(`il manque une catégorie`);
-}
-*/
+  if (!inputCategoryValue) {
+    const inputCategory = document.querySelector("#category");
+    inputCategory.classList.add("error");
+  }
+});

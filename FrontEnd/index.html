@@ -20,6 +20,7 @@
     <script type="module" src="modal.js"></script>
     <script type="module" src="formModal.js"></script>
     <script type="module" src="resetForm.js"></script>
+    <script type="module" src="validateForm.js"></script>
   </head>
 
   <body>
@@ -141,22 +142,24 @@
                         value="+ Ajouter photo"
                         name="image"
                         id="photo"
+                        class="input"
                         required
                         hidden
                       />
                       <p>jpg, png : 4mo max</p>
                     </div>
                   </div>
-                  <label for="title-work">Titre</label>
+                  <label for="title">Titre</label>
                   <input
                     required
                     title="title"
                     id="title"
-                    name="title-work"
+                    name="title"
                     type="text"
+                    class="input"
                   />
-                  <label for="category-work">Catégorie</label>
-                  <select required name="category-work" id="category">
+                  <label for="category">Catégorie</label>
+                  <select required name="category" id="category" class="input">
                     <option value=""></option>
                   </select>
 
