@@ -4,7 +4,7 @@ const reponse = await fetch("http://localhost:5678/api/works");
 let works = await reponse.json();
 
 let workForm = document.querySelector(".workForm");
-let input = document.querySelector("#input-photo");
+let input = document.querySelector("#photo");
 let source = input.files[0];
 
 function submitForm() {
@@ -21,9 +21,8 @@ function submitForm() {
         Authorization: `Bearer ${window.localStorage.getItem("token")}`,
       },
       body: formData,
-    }).catch((error) => console.log(error));
-
-    console.log(reponse);
+    });
+    workForm.reset();
     return reponse;
   });
 }
@@ -43,7 +42,6 @@ function onClick() {
 function loadImage() {
   input.addEventListener("change", (e) => {
     source = input.files[0];
-    console.log(source);
 
     const formPhoto = document.querySelector(".form-photo");
     formPhoto.style.display = "none";

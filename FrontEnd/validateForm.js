@@ -1,22 +1,6 @@
 import { createElement } from "./element.js";
 
 let workForm = document.querySelector(".workForm");
-
-function validerPhoto(source) {
-  let source = document.getElementById("input-photo").files[0];
-  if (!source) throw new Error(`il n'y a pas de photo`);
-}
-
-function validerTitle(title) {
-  let title = document.querySelector("#title").value;
-  if (!title) throw new Error(`il manque un titre`);
-}
-
-function validerCategory(category) {
-  let category = document.querySelector(["#cat-select"]).value;
-  if (!category) throw new Error(`il manque une catégorie`);
-}
-
 function afficherMessageErreur(message) {
   let spanMessageErreur = document.getElementById("messageErreur");
 
@@ -30,3 +14,52 @@ function afficherMessageErreur(message) {
   }
   spanMessageErreur.innerText = message;
 }
+
+let btnValider = document.querySelector(".validate");
+let source = document.getElementById("photo").file[0];
+let title = document.getElementById("title").value;
+let category = document.getElementById("Category").value;
+
+console.log(source, title, category);
+
+/*
+function validerInput(input) {
+  let champ = document.getElementById(input);
+  champ.addEventListener("change", (e) => {
+    if (!input.value) throw new Error(`le champ ${input} est vide`);
+  });
+}
+
+let source = document.getElementById("photo").file[0];
+let title = document.getElementById("title").value;
+let category = document.getElementById("Category").value;
+
+function validerForm() {
+  try {
+    validerInput(source);
+    validerInput(title);
+    validerInput(category);
+  } catch (erreur) {
+    afficherMessageErreur(erreur.message);
+  }
+}
+
+workForm.addEventListener("change", (e) => {
+  validerForm();
+});
+*/
+/*
+function validerPhoto(source) {
+  if (!source) throw new Error(`il n'y a pas de photo`);
+}
+
+
+function validerTitle(title) {
+  if (!title) throw new Error(`il manque un titre`);
+}
+
+
+function validerCategory(category) {
+  if (!category) throw new Error(`il manque une catégorie`);
+}
+*/

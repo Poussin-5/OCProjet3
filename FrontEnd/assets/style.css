@@ -324,6 +324,11 @@ form .input-photo {
   width: 50%;
 }
 
+.validate-green {
+  background-color: var(--second-color);
+  color: white;
+}
+
 /* modal gallery  */
 .modal-gallery {
   width: 75%;

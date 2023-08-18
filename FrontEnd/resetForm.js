@@ -1,6 +1,6 @@
 let workForm = document.querySelector(".workForm");
 
-workForm.addEventListener("reset", (e) => {
+workForm.addEventListener("reset", () => {
   let loadedImg = document.getElementById("loaded-img");
   if (loadedImg) {
     loadedImg.remove();

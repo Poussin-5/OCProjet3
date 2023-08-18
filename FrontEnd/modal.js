@@ -1,4 +1,5 @@
 import { createElement, createImage } from "./element.js";
+import { deleteWorks } from "./deleteWorks.js";
 
 const reponse = await fetch("http://localhost:5678/api/works");
 let works = await reponse.json();
@@ -33,7 +34,8 @@ const generateWorksModal = function (works) {
     const btnDelete = createElement({
       balise: `button`,
       classes: `btn-delete`,
-      html: '<i class="fa-solid fa-trash-can"></i>',
+      id: `${work.id}`,
+      html: `<i class="fa-solid fa-trash-can" id="${work.id}"></i>`,
     });
     divImageWork.appendChild(btnDelete);
   }
@@ -95,7 +97,6 @@ const backModal = function (e) {
   modal.style.display = "none";
   modal = document.querySelector(".page1");
   modal.style.display = null;
-
   workForm.reset();
 };
 
@@ -133,7 +134,11 @@ for (let category of categories) {
     value: category.id,
   });
 
-  const select = document.querySelector("#cat-select");
+  const select = document.querySelector("#category");
 
   select.appendChild(elementOption);
 }
+
+document.querySelectorAll(".btn-delete").forEach((button) => {
+  button.addEventListener("click", deleteWorks);
+});
