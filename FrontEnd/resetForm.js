@@ -10,5 +10,7 @@ workForm.addEventListener("reset", () => {
   btnSubmit.classList.remove("validate-green");
 
   const erroClassList = document.querySelectorAll(".error");
-  erroClassList.forEach((classError) => classError.classList.remove("error"));
+  erroClassList.forEach((classError) =>
+    classError.classList.remove("error", "error-size")
+  );
 });

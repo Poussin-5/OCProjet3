@@ -9,5 +9,4 @@ export const deleteWorks = async function (e) {
       Authorization: `Bearer ${window.localStorage.getItem("token")}`,
     },
   });
-  return reponse;
 };

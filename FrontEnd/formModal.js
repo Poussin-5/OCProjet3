@@ -27,15 +27,15 @@ function submitForm() {
   });
 }
 
-function importFile() {
+function openTypeFile() {
   input.click();
 }
 
-function onClick() {
+function buttonForFile() {
   let button = document.querySelector(".input-photo");
   button.addEventListener("click", (e) => {
     e.preventDefault();
-    importFile();
+    openTypeFile();
   });
 }
 
@@ -43,27 +43,35 @@ function loadImage() {
   input.addEventListener("change", (e) => {
     source = input.files[0];
 
-    const formPhoto = document.querySelector(".form-photo");
-    formPhoto.style.display = "none";
+    if (source.size <= 4194304) {
+      const formPhoto = document.querySelector(".form-photo");
+      formPhoto.style.display = "none";
 
-    const addPhoto = document.querySelector(".add-photo");
+      const addPhoto = document.querySelector(".add-photo");
 
-    const divLoadedImg = createElement({
-      balise: `div`,
-      classes: "form-photo",
-      id: "loaded-img",
-    });
-    addPhoto.appendChild(divLoadedImg);
+      const divLoadedImg = createElement({
+        balise: `div`,
+        classes: "form-photo",
+        id: "loaded-img",
+      });
+      addPhoto.appendChild(divLoadedImg);
 
-    const loadedImg = createImage({
-      src: `../FrontEnd/assets/images/${source.name}`,
-      alt: "photo du projet",
-      classes: "loaded-photo",
-    });
-    divLoadedImg.appendChild(loadedImg);
+      const loadedImg = createImage({
+        src: `../FrontEnd/assets/images/${source.name}`,
+        alt: "photo du projet",
+        classes: "loaded-photo",
+      });
+      divLoadedImg.appendChild(loadedImg);
+    } else {
+      document
+        .querySelector(".form-photo")
+        .classList.add("error-size", "error");
+      input.value = "";
+      console.log(source);
+    }
   });
 }
 
 submitForm();
-onClick();
+buttonForFile();
 loadImage();

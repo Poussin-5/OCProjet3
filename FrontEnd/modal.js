@@ -35,6 +35,7 @@ const generateWorksModal = function (works) {
       balise: `button`,
       classes: `btn-delete`,
       id: `${work.id}`,
+      type: `button`,
       html: `<i class="fa-solid fa-trash-can" id="${work.id}"></i>`,
     });
     divImageWork.appendChild(btnDelete);

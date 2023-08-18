@@ -1,4 +1,12 @@
-export const createElement = ({ balise, text, classes, id, html, value }) => {
+export const createElement = ({
+  balise,
+  text,
+  classes,
+  id,
+  html,
+  value,
+  type,
+}) => {
   const element = document.createElement(balise);
   if (text) {
     element.innerText = text;
@@ -18,6 +26,10 @@ export const createElement = ({ balise, text, classes, id, html, value }) => {
 
   if (value) {
     element.value = value;
+  }
+
+  if (type) {
+    element.type = type;
   }
   return element;
 };
