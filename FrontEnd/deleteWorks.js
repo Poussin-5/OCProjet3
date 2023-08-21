@@ -1,7 +1,6 @@
 export const deleteWorks = async function (e) {
   e.preventDefault();
   const target = e.target.getAttribute("id");
-  console.log(target);
 
   const reponse = await fetch(`http://localhost:5678/api/works/${target}`, {
     method: "DELETE",
@@ -9,4 +8,6 @@ export const deleteWorks = async function (e) {
       Authorization: `Bearer ${window.localStorage.getItem("token")}`,
     },
   });
+  console.log(reponse);
+  return reponse;
 };

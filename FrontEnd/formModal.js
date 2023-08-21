@@ -40,7 +40,7 @@ function buttonForFile() {
 }
 
 function loadImage() {
-  input.addEventListener("change", (e) => {
+  input.addEventListener("change", () => {
     source = input.files[0];
 
     if (source.size <= 4194304) {
