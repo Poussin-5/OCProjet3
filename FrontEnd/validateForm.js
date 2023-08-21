@@ -1,32 +1,6 @@
-import { createElement } from "./element.js";
-
 let workForm = document.querySelector(".workForm");
-function afficherMessageErreur(message) {
-  let spanMessageErreur = document.getElementById("messageErreur");
-
-  if (!spanMessageErreur) {
-    spanMessageErreur = createElement({
-      balise: `span`,
-      classes: "erreur",
-      id: "messageErreur",
-    });
-    workForm.append(spanMessageErreur);
-  }
-  spanMessageErreur.innerText = message;
-}
 
 let btnSubmit = document.querySelector(".validate");
-
-/*
-function getValueInput() {
-  let inputPhoto = document.querySelector("#photo").files[0];
-  let inputTitle = document.querySelector("#title").value;
-  let inputCategory = document.querySelector("#category").value;
-  console.log(inputCategory, inputPhoto, inputTitle)
-
-}
-
-*/
 
 workForm.addEventListener("change", () => {
   let inputPhoto = document.querySelector("#photo").files[0];
