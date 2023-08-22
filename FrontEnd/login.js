@@ -5,7 +5,7 @@ function afficherAccueil() {
   location.href = pageAccueil;
 }
 
-function afficherMessageErreur() {
+function messageErreurLogin() {
   let spanMessageErreur = document.getElementById("messageErreur");
 
   if (!spanMessageErreur) {
@@ -36,13 +36,12 @@ function submitLogin() {
       body: JSON.stringify(user),
     });
     let userJson = await reponse.json();
-    console.log(userJson);
 
     let userId = userJson.userId;
     let token = userJson.token;
 
     if (!userId) {
-      afficherMessageErreur();
+      messageErreurLogin();
     } else {
       window.localStorage.setItem("token", token);
       window.localStorage.setItem("userId", userId);
