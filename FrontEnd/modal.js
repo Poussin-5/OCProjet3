@@ -1,13 +1,13 @@
 import { createElement, createImage } from "./element.js";
 import { deleteWorks } from "./deleteWorks.js";
 
+const modalGallery = document.querySelector(".modal-gallery");
+
 const reponse = await fetch("http://localhost:5678/api/works");
 let works = await reponse.json();
 
-const generateWorksModal = function (works) {
+export const generateWorksModal = async function (works) {
   for (let work of works) {
-    const modalGallery = document.querySelector(".modal-gallery");
-
     const elementWork = createElement({
       balise: `figure`,
     });
