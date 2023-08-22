@@ -1,5 +1,4 @@
 import { createElement, createImage } from "./element.js";
-import { fetchWorks } from "./getElement.js";
 
 const gallery = document.querySelector(".gallery");
 

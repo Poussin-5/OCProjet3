@@ -1,6 +1,10 @@
+import { createElement } from "./element.js";
+
 let workForm = document.querySelector(".workForm");
 
 let btnSubmit = document.querySelector(".validate");
+
+let spanMessageErreur = document.getElementById("message-erreur");
 
 workForm.addEventListener("change", () => {
   let inputPhoto = document.querySelector("#photo").files[0];
@@ -9,6 +13,11 @@ workForm.addEventListener("change", () => {
 
   if (inputPhoto && inputTitle && inputCategory) {
     btnSubmit.classList.add("validate-green");
+    afficherMessageErreur("");
+    const errorClassList = document.querySelectorAll(".error");
+    errorClassList.forEach((classError) =>
+      classError.classList.remove("error", "error-")
+    );
   } else {
     btnSubmit.classList.remove("validate-green");
   }
@@ -18,19 +27,37 @@ btnSubmit.addEventListener("click", () => {
   const inputPhotoValue = document.querySelector("#photo").files[0];
   const inputTitleValue = document.querySelector("#title").value;
   const inputCategoryValue = document.querySelector("#category").value;
+  try {
+    if (!inputPhotoValue) {
+      const formPhoto = document.querySelector(".form-photo");
+      formPhoto.classList.add("error");
+      throw new Error(`il n'y a pas de photo`);
+    }
 
-  if (!inputPhotoValue) {
-    const formPhoto = document.querySelector(".form-photo");
-    formPhoto.classList.add("error");
-  }
+    if (!inputTitleValue) {
+      const inputTitle = document.querySelector("#title");
+      inputTitle.classList.add("error");
+      throw new Error(`il n'y a pas de titre`);
+    }
 
-  if (!inputTitleValue) {
-    const inputTitle = document.querySelector("#title");
-    inputTitle.classList.add("error");
-  }
-
-  if (!inputCategoryValue) {
-    const inputCategory = document.querySelector("#category");
-    inputCategory.classList.add("error");
+    if (!inputCategoryValue) {
+      const inputCategory = document.querySelector("#category");
+      inputCategory.classList.add("error");
+      throw new Error(`il n'y a pas de catégorie`);
+    }
+  } catch (erreur) {
+    afficherMessageErreur(erreur.message);
   }
 });
+
+export function afficherMessageErreur(message) {
+  if (!spanMessageErreur) {
+    spanMessageErreur = createElement({
+      balise: "span",
+      classes: "error-text",
+      id: "message-erreur",
+    });
+    workForm.append(spanMessageErreur);
+  }
+  spanMessageErreur.innerText = message;
+}

@@ -121,9 +121,12 @@ const stopPropagation = function (e) {
   e.stopPropagation();
 };
 
-document.querySelectorAll(".js-modal").forEach((a) => {
-  a.addEventListener("click", openModal);
-});
+function clickModal() {
+  document.querySelectorAll(".js-modal").forEach((a) => {
+    a.addEventListener("click", openModal);
+  });
+}
+clickModal();
 
 const rep = await fetch("http://localhost:5678/api/categories");
 let categories = await rep.json();
@@ -145,5 +148,4 @@ export function buttonDelete() {
     button.addEventListener("click", deleteWorks);
   });
 }
-
 buttonDelete();
