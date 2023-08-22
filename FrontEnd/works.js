@@ -1,12 +1,13 @@
 import { createElement, createImage } from "./element.js";
+import { fetchWorks } from "./getElement.js";
+
+const gallery = document.querySelector(".gallery");
 
 const reponse = await fetch("http://localhost:5678/api/works");
 let works = await reponse.json();
 
-function generateWorks(works) {
+export function generateWorks(works) {
   for (let work of works) {
-    const gallery = document.querySelector(".gallery");
-
     const elementWork = createElement({
       balise: `figure`,
     });
@@ -31,7 +32,7 @@ generateWorks(works);
 
 const btnTous = document.querySelector(".btn-tous");
 btnTous.addEventListener("click", () => {
-  document.querySelector(".gallery").innerHTML = "";
+  gallery.innerHTML = "";
   generateWorks(works);
 });
 
@@ -51,11 +52,13 @@ function generateFilter(categories) {
     filter.appendChild(elementFilter);
 
     const btn = document.querySelector(`.btn-${category.id}`);
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", async () => {
+      const reponse = await fetch("http://localhost:5678/api/works");
+      let works = await reponse.json();
       const worksBtn = works.filter(function (works) {
         return works.categoryId === category.id;
       });
-      document.querySelector(".gallery").innerHTML = "";
+      gallery.innerHTML = "";
       generateWorks(worksBtn);
     });
   }

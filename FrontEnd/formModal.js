@@ -1,7 +1,9 @@
 import { createElement, createImage } from "./element.js";
+import { generateWorksModal } from "./modal.js";
+import { generateWorks } from "./works.js";
 
-const reponse = await fetch("http://localhost:5678/api/works");
-let works = await reponse.json();
+const modalGallery = document.querySelector(".modal-gallery");
+const gallery = document.querySelector(".gallery");
 
 let workForm = document.querySelector(".workForm");
 let input = document.querySelector("#photo");
@@ -23,7 +25,12 @@ function submitForm() {
       body: formData,
     });
     workForm.reset();
-    return reponse;
+    modalGallery.innerHTML = "";
+    gallery.innerHTML = "";
+    const rep = await fetch("http://localhost:5678/api/works");
+    let works = await rep.json();
+    generateWorksModal(works);
+    generateWorks(works);
   });
 }
 
@@ -57,7 +64,7 @@ function loadImage() {
       addPhoto.appendChild(divLoadedImg);
 
       const loadedImg = createImage({
-        src: `../FrontEnd/assets/images/${source.name}`,
+        src: `./assets/images/${source.name}`,
         alt: "photo du projet",
         classes: "loaded-photo",
       });

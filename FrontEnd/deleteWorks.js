@@ -1,5 +1,10 @@
+import { generateWorksModal } from "./modal.js";
+import { generateWorks } from "./works.js";
+
+const modalGallery = document.querySelector(".modal-gallery");
+const gallery = document.querySelector(".gallery");
+
 export const deleteWorks = async function (e) {
-  e.preventDefault();
   const target = e.target.getAttribute("id");
 
   const reponse = await fetch(`http://localhost:5678/api/works/${target}`, {
@@ -8,6 +13,10 @@ export const deleteWorks = async function (e) {
       Authorization: `Bearer ${window.localStorage.getItem("token")}`,
     },
   });
-  console.log(reponse);
-  return reponse;
+  modalGallery.innerHTML = "";
+  gallery.innerHTML = "";
+  const rep = await fetch("http://localhost:5678/api/works");
+  let works = await rep.json();
+  generateWorksModal(works);
+  generateWorks(works);
 };
