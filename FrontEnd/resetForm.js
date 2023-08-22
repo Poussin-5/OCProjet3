@@ -1,4 +1,7 @@
+import { afficherMessageErreur } from "./validateForm.js";
+
 let workForm = document.querySelector(".workForm");
+let spanMessageErreur = document.getElementById("message-erreur");
 
 workForm.addEventListener("reset", () => {
   let loadedImg = document.getElementById("loaded-img");
@@ -9,8 +12,10 @@ workForm.addEventListener("reset", () => {
   const btnSubmit = document.querySelector(".validate");
   btnSubmit.classList.remove("validate-green");
 
-  const erroClassList = document.querySelectorAll(".error");
-  erroClassList.forEach((classError) =>
-    classError.classList.remove("error", "error-size")
+  const errorClassList = document.querySelectorAll(".error");
+  errorClassList.forEach((classError) =>
+    classError.classList.remove("error", "error-text")
   );
+
+  afficherMessageErreur("");
 });

@@ -53,7 +53,7 @@ function loadImage() {
     if (source.size >= 4194304) {
       document
         .querySelector(".form-photo")
-        .classList.add("error-size", "error");
+        .classList.add("error-text", "error");
       input.value = "";
       return;
     }
