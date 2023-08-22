@@ -140,6 +140,10 @@ for (let category of categories) {
   select.appendChild(elementOption);
 }
 
-document.querySelectorAll(".btn-delete").forEach((button) => {
-  button.addEventListener("click", deleteWorks);
-});
+export function buttonDelete() {
+  document.querySelectorAll(".btn-delete").forEach((button) => {
+    button.addEventListener("click", deleteWorks);
+  });
+}
+
+buttonDelete();

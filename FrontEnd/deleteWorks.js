@@ -1,4 +1,4 @@
-import { generateWorksModal } from "./modal.js";
+import { buttonDelete, generateWorksModal } from "./modal.js";
 import { generateWorks } from "./works.js";
 
 const modalGallery = document.querySelector(".modal-gallery");
@@ -19,4 +19,5 @@ export const deleteWorks = async function (e) {
   let works = await rep.json();
   generateWorksModal(works);
   generateWorks(works);
+  buttonDelete();
 };

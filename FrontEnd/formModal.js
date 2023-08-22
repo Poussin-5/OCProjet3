@@ -1,5 +1,5 @@
 import { createElement, createImage } from "./element.js";
-import { generateWorksModal } from "./modal.js";
+import { buttonDelete, generateWorksModal } from "./modal.js";
 import { generateWorks } from "./works.js";
 
 const modalGallery = document.querySelector(".modal-gallery");
@@ -14,7 +14,6 @@ function submitForm() {
     e.preventDefault();
 
     let formData = new FormData(workForm);
-    console.log(formData);
 
     const reponse = await fetch("http://localhost:5678/api/works", {
       method: "POST",
@@ -31,6 +30,7 @@ function submitForm() {
     let works = await rep.json();
     generateWorksModal(works);
     generateWorks(works);
+    buttonDelete();
   });
 }
 
@@ -49,7 +49,6 @@ function buttonForFile() {
 function loadImage() {
   input.addEventListener("change", () => {
     source = input.files[0];
-    console.log(source);
 
     if (source.size >= 4194304) {
       document
@@ -77,7 +76,6 @@ function loadImage() {
     });
 
     getBase64(source).then((data) => {
-      console.log(data);
       loadedImg.src = data;
     });
 
