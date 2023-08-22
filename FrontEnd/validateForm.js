@@ -13,11 +13,11 @@ workForm.addEventListener("change", () => {
 
   if (inputPhoto && inputTitle && inputCategory) {
     btnSubmit.classList.add("validate-green");
-    afficherMessageErreur("");
     const errorClassList = document.querySelectorAll(".error");
     errorClassList.forEach((classError) =>
       classError.classList.remove("error", "error-")
     );
+    afficherMessageErreur("");
   } else {
     btnSubmit.classList.remove("validate-green");
   }
