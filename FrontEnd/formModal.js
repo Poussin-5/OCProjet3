@@ -1,9 +1,11 @@
 import { createElement, createImage } from "./element.js";
 import { buttonDelete, generateWorksModal } from "./modal.js";
+import { afficherMessageErreur } from "./validateForm.js";
 import { generateWorks } from "./works.js";
 
 const modalGallery = document.querySelector(".modal-gallery");
 const gallery = document.querySelector(".gallery");
+let spanMessageErreur = document.getElementById("message-erreur");
 
 let workForm = document.querySelector(".workForm");
 let input = document.querySelector("#photo");
@@ -48,38 +50,43 @@ function buttonForFile() {
 
 function loadImage() {
   input.addEventListener("change", () => {
-    source = input.files[0];
+    try {
+      source = input.files[0];
 
-    if (source.size >= 4194304) {
-      document
-        .querySelector(".form-photo")
-        .classList.add("error-text", "error");
-      input.value = "";
-      return;
+      if (source.size > 4194304) {
+        document
+          .querySelector(".form-photo")
+          .classList.add("error-text", "error");
+        input.value = "";
+        throw new Error(`la photo est trop volumineuse`);
+      }
+      const formPhoto = document.querySelector(".form-photo");
+      formPhoto.style.display = "none";
+
+      const addPhoto = document.querySelector(".add-photo");
+
+      const divLoadedImg = createElement({
+        balise: `div`,
+        classes: "form-photo",
+        id: "loaded-img",
+      });
+      addPhoto.appendChild(divLoadedImg);
+
+      const loadedImg = createImage({
+        src: ``,
+        alt: "photo du projet",
+        classes: "loaded-photo",
+      });
+
+      getBase64(source).then((data) => {
+        loadedImg.src = data;
+      });
+
+      divLoadedImg.appendChild(loadedImg);
+    } catch (erreur) {
+      console.log(erreur);
+      afficherMessageErreur(erreur.message);
     }
-    const formPhoto = document.querySelector(".form-photo");
-    formPhoto.style.display = "none";
-
-    const addPhoto = document.querySelector(".add-photo");
-
-    const divLoadedImg = createElement({
-      balise: `div`,
-      classes: "form-photo",
-      id: "loaded-img",
-    });
-    addPhoto.appendChild(divLoadedImg);
-
-    const loadedImg = createImage({
-      src: ``,
-      alt: "photo du projet",
-      classes: "loaded-photo",
-    });
-
-    getBase64(source).then((data) => {
-      loadedImg.src = data;
-    });
-
-    divLoadedImg.appendChild(loadedImg);
   });
 }
 
