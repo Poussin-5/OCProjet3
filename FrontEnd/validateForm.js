@@ -1,10 +1,8 @@
-import { createElement } from "./element.js";
+import { messageErreurWorkForm } from "./messageErreur.js";
 
 let workForm = document.querySelector(".workForm");
 
 let btnSubmit = document.querySelector(".validate");
-
-let spanMessageErreur = document.getElementById("message-erreur");
 
 workForm.addEventListener("change", () => {
   let inputPhoto = document.querySelector("#photo").files[0];
@@ -15,9 +13,9 @@ workForm.addEventListener("change", () => {
     btnSubmit.classList.add("validate-green");
     const errorClassList = document.querySelectorAll(".error");
     errorClassList.forEach((classError) =>
-      classError.classList.remove("error", "error-")
+      classError.classList.remove("error", "error-text")
     );
-    afficherMessageErreur("");
+    messageErreurWorkForm("");
   } else {
     btnSubmit.classList.remove("validate-green");
   }
@@ -46,18 +44,6 @@ btnSubmit.addEventListener("click", () => {
       throw new Error(`il n'y a pas de catégorie`);
     }
   } catch (erreur) {
-    afficherMessageErreur(erreur.message);
+    messageErreurWorkForm(erreur.message);
   }
 });
-
-export function afficherMessageErreur(message) {
-  if (!spanMessageErreur) {
-    spanMessageErreur = createElement({
-      balise: "span",
-      classes: "error-text",
-      id: "message-erreur",
-    });
-    workForm.append(spanMessageErreur);
-  }
-  spanMessageErreur.innerText = message;
-}

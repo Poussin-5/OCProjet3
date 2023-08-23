@@ -1,7 +1,6 @@
-import { afficherMessageErreur } from "./validateForm.js";
+import { messageErreurWorkForm } from "./messageErreur.js";
 
 let workForm = document.querySelector(".workForm");
-let spanMessageErreur = document.getElementById("message-erreur");
 
 workForm.addEventListener("reset", () => {
   let loadedImg = document.getElementById("loaded-img");
@@ -17,5 +16,5 @@ workForm.addEventListener("reset", () => {
     classError.classList.remove("error", "error-text")
   );
 
-  afficherMessageErreur("");
+  messageErreurWorkForm("");
 });

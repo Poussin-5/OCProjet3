@@ -1,5 +1,4 @@
-import { buttonDelete, generateWorksModal } from "./modal.js";
-import { generateWorks } from "./works.js";
+import { refreshGallery, refreshModalGallery } from "./refreshGallery.js";
 
 const modalGallery = document.querySelector(".modal-gallery");
 const gallery = document.querySelector(".gallery");
@@ -13,11 +12,6 @@ export const deleteWorks = async function (e) {
       Authorization: `Bearer ${window.localStorage.getItem("token")}`,
     },
   });
-  modalGallery.innerHTML = "";
-  gallery.innerHTML = "";
-  const rep = await fetch("http://localhost:5678/api/works");
-  let works = await rep.json();
-  generateWorksModal(works);
-  generateWorks(works);
-  buttonDelete();
+  refreshGallery(gallery);
+  refreshModalGallery(modalGallery);
 };
