@@ -1,11 +1,9 @@
 import { createElement, createImage } from "./element.js";
-import { buttonDelete, generateWorksModal } from "./modal.js";
-import { afficherMessageErreur } from "./validateForm.js";
-import { generateWorks } from "./works.js";
+import { refreshGallery, refreshModalGallery } from "./refreshGallery.js";
+import { messageErreurWorkForm } from "./messageErreur.js";
 
 const modalGallery = document.querySelector(".modal-gallery");
 const gallery = document.querySelector(".gallery");
-let spanMessageErreur = document.getElementById("message-erreur");
 
 let workForm = document.querySelector(".workForm");
 let input = document.querySelector("#photo");
@@ -26,13 +24,8 @@ function submitForm() {
       body: formData,
     });
     workForm.reset();
-    modalGallery.innerHTML = "";
-    gallery.innerHTML = "";
-    const rep = await fetch("http://localhost:5678/api/works");
-    let works = await rep.json();
-    generateWorksModal(works);
-    generateWorks(works);
-    buttonDelete();
+    refreshGallery(gallery);
+    refreshModalGallery(modalGallery);
   });
 }
 
@@ -85,7 +78,7 @@ function loadImage() {
       divLoadedImg.appendChild(loadedImg);
     } catch (erreur) {
       console.log(erreur);
-      afficherMessageErreur(erreur.message);
+      messageErreurWorkForm(erreur.message);
     }
   });
 }

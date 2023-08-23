@@ -52,8 +52,6 @@ function generateFilter(categories) {
 
     const btn = document.querySelector(`.btn-${category.id}`);
     btn.addEventListener("click", async () => {
-      const reponse = await fetch("http://localhost:5678/api/works");
-      let works = await reponse.json();
       const worksBtn = works.filter(function (works) {
         return works.categoryId === category.id;
       });
