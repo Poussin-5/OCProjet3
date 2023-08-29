@@ -21,7 +21,7 @@ export function messageErreurLogin() {
     spanMessageErreur = createElement({
       balise: `span`,
       id: "messageErreur",
-      text: "l'email ou le mot de passe n'est pas correct",
+      text: "Erreur dans l’identifiant ou le mot de passe",
       classes: "error",
     });
     formConnexion.append(spanMessageErreur);
